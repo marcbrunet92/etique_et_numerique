@@ -84,3 +84,74 @@ plt.title("Goldbach v2")
 # Afficher tous les graphiques dans la même fenêtre
 plt.tight_layout()  # Ajuste l'espacement entre les graphiques
 plt.show()
+
+
+
+
+
+
+
+
+
+"""
+def eratosthene(N: int) -> list:
+    nombres = [i for i in range(N + 1)]
+    premiers = []
+
+    for i in range(2, N + 1):
+        if nombres[i] != 0:
+            premiers.append(i)
+            k = 2
+            while i * k <= N:
+                nombres[i * k] = 0
+                k += 1
+
+    return premiers
+
+def goldbach_v1(N: int) -> tuple:
+    premiers = eratosthene(N)
+    entiers_pairs = [i for i in range(4, N + 1, 2)]
+    compte = [0] * len(entiers_pairs)
+
+    for i in range(len(entiers_pairs)):
+        x = entiers_pairs[i]
+        j1 = 0
+        while j1 < len(premiers) and premiers[j1] <= x // 2:
+            j2 = j1
+            while j2 < len(premiers) and premiers[j1] + premiers[j2] <= x:
+                if premiers[j1] + premiers[j2] == x:
+                    compte[i] += 1
+                j2 += 1
+            j1 += 1
+    return entiers_pairs, compte
+
+def goldbach_v2(N: int) -> tuple:
+    premiers = eratosthene(N)
+    entiers_pairs = [i for i in range(4, N + 1, 2)]
+    compte = [0] * len(entiers_pairs)
+
+    compte[0] = 1
+    j1 = 1
+
+    while j1 < len(premiers) and premiers[j1] <= N // 2:
+        p1 = premiers[j1]
+        j2 = j1
+
+        while j2 < len(premiers) and p1 + premiers[j2] <= N:
+            p2 = premiers[j2]
+            pos = (p1 + p2) // 2 - 2
+            compte[pos] += 1
+            j2 += 1
+
+        j1 += 1
+
+    return entiers_pairs, compte
+
+print(eratosthene(100))
+print(goldbach_v1(30))
+import matplotlib.pyplot as plt
+liste_x, liste_y = goldbach_v2(10**4)
+plt.plot(liste_x, liste_y, '.')
+plt.show()
+
+"""
