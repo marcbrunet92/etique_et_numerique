@@ -83,9 +83,7 @@ def SaD_pDyn(L_objets:list[tuple[int]],P:int)->tuple[list[int],int ,int]:
                 if o[0] > j or V[i-1,j] > V[i-1,j - o[0]] + o[1]:
                     V[i,j]=V[i-1,j]
                 else:
-                    V[i,j]=V[i-1,j - o[0]] + o[1]
-    print(V) #non obligatoire
-    
+                    V[i,j]=V[i-1,j - o[0]] + o[1]    
     #reconstruction de la solution:
     L_e =[]
     j=P
