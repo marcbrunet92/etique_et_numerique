@@ -3,3 +3,4 @@ scratch.py
 *.png
 .vscode/
 *.exe
+__pycache__/
