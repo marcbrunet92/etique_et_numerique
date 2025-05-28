@@ -10,11 +10,7 @@ print("- classe graphe_base")
 print("- classes graphe, graphe_p, graphe_o et graphe_op, sous-classes de graphe" )
 print("- fonctions genere_graphe_aleatoire et genere_graphe_p_aleatoire")
 print("- fonctions graphe_from_liste et graphe_p_from_liste")
-print("Ce fichier importe également numpy aliasé en np, et les fonctions random et randint du module random")
-
-print("")
-print("")
-
+print("Ce fichier importe également numpy aliasé en np, et les fonctions random et randint du module random\n\n")
 print("Taper help(pile), help(file) ou help(graphe) pour avoir de l'aide sur ces diverses classes")
 
 class pile:
@@ -26,16 +22,10 @@ class pile:
     def __init__(self):
         """Constructeur de la classe pile"""        
         self.data=[]
-
-
     def __repr__(self):
         """Retourne une représentation de la pile sous forme de chaîne de caractères
         """
         return "\n"+self.chaine_pile()
-
-
-
-
     def est_vide(self):
         """teste si la pile est vide
         Utilisation : si P est une pile, on tape P.est_vide()
@@ -43,7 +33,6 @@ class pile:
         if len(self.data)==0:
             return True
         return False
-
     def pop(self):
         """enlève le dernier élément de la pile (LIFO) et le retourne.
         Lève une exception si la pile est vide
@@ -55,39 +44,30 @@ class pile:
             raise Exception("La pile est vide")
 
         return self.data.pop()
-
     def depile(self):
         """Alias de pop"""
         return self.pop()
-
     def empile(self,element):
         """Alias de insert"""
         self.insert(element)
-
     def insere(self,element):
         """Alias de insert"""
         self.insert(element)
-
     def push(self,element):
         """Alias de insert"""
         self.insert(element)
-
-
     def insert(self,element):
         """Ajoute un élément en haut de la pile
         Utilisation : si P est une pile et e un élément, on tape P.insert(e)"""
         self.data.append(element)
-
     def top(self):
         """Retourne le haut de la pile (priorité LIFO) sans modifier la pile
         Utilisation : si P est une pile, on tape P.top()"""
         a=self.pop()
         self.empile(a)
         return a
-
     def affiche_pile(self):
         print('\n'+self.chaine_pile())
-
     def chaine_pile(self):
         if self.est_vide():
             return "----"
@@ -95,11 +75,8 @@ class pile:
         retour=str(a)+"\n"+self.chaine_pile()
         self.empile(a)
         return retour
-
-
 def pile_vide():
     return pile()
-
 def genere_pile_aleatoire(n,distinct=False):
     from random import randint
     pile=pile_vide()
@@ -117,24 +94,13 @@ def genere_pile_aleatoire(n,distinct=False):
     for e in l:
         pile.empile(e)
     return pile
-
-
-
-
-
-
-
 import heapq as hpq
-
-
 class file:
     """Ceci est la classe file, implémentée à l'aide de la classe hpq du module heapq. On considère une file simple comme une file de priorité où tous els éléments ont une priorité à pmax+1"""
     def __init__(self):
         self.data=[]
-
     def __repr__(self):
         return self.chaine_file()
-
     def get_max_p(self):
         if self.est_vide():
             return 0
@@ -144,25 +110,20 @@ class file:
                 if e[0]>max:
                     max=e[0]
             return max
-
     def est_vide(self):
         """Retourne True si la file est vide, False sinon
         Utilisation : si F est une file, on tape F.est_vide()"""
         return len(self.data)==0
-
     def insere(self,e):
         """Ajoute un élément dans la file
          Utilisation : si F est une file et e un élément, on tape F.insere(e)"""
         hpq.heappush(self.data,(self.get_max_p()+1,e))
-
     def insert(self,e):
         """alias de insere"""
         self.insere(e)
-
     def enfile(self,e):
         """alias de insere"""
         self.insere(e)
-
     def retire(self):
         """Retire un élément selon la priorité FIFO et en retourne la valeur
         Lève une exception si la pile est vide
@@ -172,10 +133,8 @@ class file:
         except:
             raise Exception("La file est vide")
         return a
-
     def affiche_file(self):
         print(self.chaine_file)
-
     def top(self):
         return self.data[0][1]
 
@@ -191,9 +150,6 @@ class file:
             c_e=file_aux.retire()
             self.enfile(c_e)
         return s
-
-
-
 class filep:
     """Ceci est la classe filep, implémentée à l'aide de la classe hpq du module heapq
     Afin de conserver un comportement FIFO en cas d'égalité des priorités, les éléments en interne sont de la forme (p,pp,e) où p est la priorité, pp une priorité incrémentielle en cas d'insertion avec égalité de p, et e l'élément"""
@@ -262,9 +218,6 @@ class filep:
 
     def affiche_file(self):
         print(self.chaine_file)
-
-
-
 class filep_unique:
     """Ceci est la classe filep_unique, implémentée à l'aide de la classe hpq du module heapq
     Afin de conserver un comportement FIFO en cas d'égalité des priorités, les éléments en interne sont de la forme (p,pp,e) où p est la priorité, pp une priorité incrémentielle en cas d'insertion avec égalité de p, et e l'élément
@@ -348,8 +301,6 @@ class filep_unique:
     def affiche_file(self):
         print(self.chaine_file)
 
-
-
 def genere_file_aleatoire(n,distinct=False):
     from random import randint
     file=file_vide()
@@ -378,15 +329,8 @@ def filep_vide():
 def filepu_vide():
     return filep_unique()
 
-
-
 from random import random,randint
 import numpy as np
-
-
-
-
-
 
 class graphe_base:
     def __init__(self):
